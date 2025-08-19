@@ -5,10 +5,10 @@ import os
 def get_connection():
     """Connecting to Snowflake"""
     conn = snowflake.connector.connect(
-        user=os.getenv("SNOWFLAKE_USER"),
-        password=os.getenv("SNOWFLAKE_PASSWORD"),
-        account=os.getenv("SNOWFLAKE_ACCOUNT"),
-        warehouse=os.getenv("SNOWFLAKE_WAREHOUSE"),
+        user=os.getenv("ARTURSMINOVS"),
+        password=os.getenv("Zaqwsxcderfvbgty!26"),
+        account=os.getenv("hu01507.eu-north-1.aws"),
+        warehouse=os.getenv("BOOTCAMP_WH"),
         database="BOOTCAMP_RALLY",
         schema="RALLY_SCHEMA"
     )
@@ -30,3 +30,4 @@ def execute(query, params=None):
     conn.commit()
     cur.close()
     conn.close()
+
