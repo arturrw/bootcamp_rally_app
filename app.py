@@ -1,7 +1,6 @@
 import streamlit as st
-import pandas as pd
-import random
 from db_utils import fetch_df, execute
+from race import simulate_race, pick_winner
 
 st.set_page_config(page_title="Bootcamp Rally Racing App", layout="centered")
 
@@ -65,16 +64,8 @@ if st.button("Start Race!"):
         JOIN rally_schema.teams t ON c.team_id = t.team_id;
     """)
 
-    results = []
-    for _, row in cars.iterrows():
-        base_time = 100 / row["MAX_SPEED"]
-        penalty = random.uniform(0, (1 - row["RELIABILITY"]))
-        total_time = base_time + penalty
-        results.append((row["TEAM_ID"], row["TEAM_NAME"], row["CAR_NAME"], total_time))
-
-    # Winner result
-    results_df = pd.DataFrame(results, columns=["team_id", "team_name", "car_name", "time"])
-    winner = results_df.sort_values("time").iloc[0]
+    results_df = simulate_race(cars)
+    winner = pick_winner(results_df)
 
     # Budgets and winner
     for _, row in cars.iterrows():
@@ -82,4 +73,4 @@ if st.button("Start Race!"):
     execute("UPDATE rally_schema.teams SET budget = budget + 5000 WHERE team_id = %s", (int(winner["team_id"]),))
 
     st.success(f"Winner: {winner['team_name']} with {winner['car_name']} (time={winner['time']:.2f})")
-    st.dataframe(results_df.sort_values("time"))
+    st.dataframe(results_df)
