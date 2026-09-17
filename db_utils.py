@@ -50,6 +50,3 @@ def execute(query: str, params=None):
     conn.commit()
     cur.close()
     conn.close()
-
-print("DEBUG user:", os.getenv("SNOWFLAKE_USER"))
-print("DEBUG account:", os.getenv("SNOWFLAKE_ACCOUNT"))
