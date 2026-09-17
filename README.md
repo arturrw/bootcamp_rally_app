@@ -10,12 +10,13 @@ is stored in [Snowflake](https://www.snowflake.com/).
 
 ## Screenshots
 
-> Images below are placeholders — see [`docs/screenshots/README.md`](docs/screenshots/README.md)
-> for what to capture and drop in.
+> Captured from the app running against sample data (not the real database) — see
+> [`docs/screenshots/README.md`](docs/screenshots/README.md) if you want to refresh these against
+> your own data.
 
 | Dashboard | Start a race |
 |---|---|
-| ![Dashboard screenshot placeholder](docs/screenshots/dashboard.png) | ![Race result screenshot placeholder](docs/screenshots/race-result.png) |
+| ![Dashboard: Teams and Cars tables plus Add Team / Add Car forms](docs/screenshots/dashboard.png) | ![Race result: winner banner and results table after clicking Start Race](docs/screenshots/race-result.png) |
 
 ## How it works
 
